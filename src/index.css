@@ -1,0 +1,317 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* CSS Variables for Themes */
+:root {
+  /* Light Theme */
+  --color-primary: #ffffff;
+  --color-secondary: #f8fafc;
+  --color-accent: #3b82f6;
+  --color-accent-hover: #2563eb;
+  --color-text-primary: #1f2937;
+  --color-text-secondary: #6b7280;
+  --color-overlay: rgba(0, 0, 0, 0.4);
+  --color-overlay-hover: rgba(0, 0, 0, 0.6);
+}
+
+[data-theme="dark"] {
+  /* Dark Theme */
+  --color-primary: #1e293b;
+  --color-secondary: #334155;
+  --color-accent: #06b6d4;
+  --color-accent-hover: #0891b2;
+  --color-text-primary: #f1f5f9;
+  --color-text-secondary: #cbd5e1;
+  --color-overlay: rgba(0, 0, 0, 0.6);
+  --color-overlay-hover: rgba(0, 0, 0, 0.8);
+}
+
+[data-theme="black"] {
+  /* Black Theme */
+  --color-primary: #000000;
+  --color-secondary: #1a1a1a;
+  --color-accent: #ffffff;
+  --color-accent-hover: #e5e5e5;
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #a3a3a3;
+  --color-overlay: rgba(0, 0, 0, 0.8);
+  --color-overlay-hover: rgba(0, 0, 0, 0.9);
+}
+
+/* Apply theme colors */
+.bg-primary {
+  background-color: var(--color-primary);
+}
+
+.bg-secondary {
+  background-color: var(--color-secondary);
+}
+
+.bg-accent {
+  background-color: var(--color-accent);
+}
+
+.bg-accent-hover {
+  background-color: var(--color-accent-hover);
+}
+
+.bg-overlay {
+  background-color: var(--color-overlay);
+}
+
+.bg-overlay-hover {
+  background-color: var(--color-overlay-hover);
+}
+
+.text-text-primary {
+  color: var(--color-text-primary);
+}
+
+.text-text-secondary {
+  color: var(--color-text-secondary);
+}
+
+.text-accent {
+  color: var(--color-accent);
+}
+
+.text-accent-hover {
+  color: var(--color-accent-hover);
+}
+
+.border-accent {
+  border-color: var(--color-accent);
+}
+
+.hover\:bg-accent:hover {
+  background-color: var(--color-accent);
+}
+
+.hover\:bg-accent-hover:hover {
+  background-color: var(--color-accent-hover);
+}
+
+.hover\:text-accent:hover {
+  color: var(--color-accent);
+}
+
+.hover\:text-accent-hover:hover {
+  color: var(--color-accent-hover);
+}
+
+.hover\:border-accent:hover {
+  border-color: var(--color-accent);
+}
+
+/* Custom Animations */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 1s ease-out;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-accent);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent-hover);
+}
+
+/* Ensure proper contrast for all themes */
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Fix for theme transitions */
+.bg-primary,
+.bg-secondary,
+.text-text-primary,
+.text-text-secondary {
+  transition: all 0.3s ease;
+}
+
+/* Parallax effect enhancement */
+.bg-fixed {
+  background-attachment: fixed;
+}
+
+/* Mobile optimization - disable parallax on mobile for better performance */
+@media (max-width: 768px) {
+  .bg-fixed {
+    background-attachment: scroll;
+  }
+}
+
+/* Enhanced responsive design */
+@media (max-width: 640px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  /* Improve touch targets on mobile */
+  button, a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Better spacing on mobile */
+  .space-y-6 > * + * {
+    margin-top: 1rem;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  /* Tablet optimizations */
+  .container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+@media (min-width: 1025px) {
+  /* Desktop optimizations */
+  .container {
+    max-width: 1200px;
+  }
+}
+
+/* Custom button styles */
+button {
+  transition: all 0.3s ease;
+}
+
+/* Focus styles for accessibility */
+button:focus,
+input:focus,
+a:focus {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* Loading animation for images */
+img {
+  transition: opacity 0.3s ease;
+}
+
+/* Improved form styles */
+input, textarea {
+  transition: all 0.3s ease;
+}
+
+input:focus, textarea:focus {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Modal animations */
+@keyframes modal-fade-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.modal-enter {
+  animation: modal-fade-in 0.3s ease-out;
+}
+
+/* Improved hover effects */
+.hover-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Better text rendering */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Ensure proper spacing */
+.container {
+  max-width: 1200px;
+}
+
+/* Performance optimizations */
+.will-change-transform {
+  will-change: transform;
+}
+
+.will-change-opacity {
+  will-change: opacity;
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  body {
+    background: white !important;
+    color: black !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  :root {
+    --color-accent: #0066cc;
+    --color-accent-hover: #0052a3;
+  }
+  
+  [data-theme="dark"] {
+    --color-accent: #66b3ff;
+    --color-accent-hover: #4da6ff;
+  }
+  
+  [data-theme="black"] {
+    --color-accent: #ffffff;
+    --color-accent-hover: #e6e6e6;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .bg-fixed {
+    background-attachment: scroll !important;
+  }
+}
